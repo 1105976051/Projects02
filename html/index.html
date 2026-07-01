@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>口腔解剖生理学 - 第八版</title>
+  <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-brand">
+        <span>🦷</span>
+        <span>口腔解剖生理学</span>
+      </a>
+      <button class="navbar-toggle" id="navbarToggle">☰</button>
+      <ul class="navbar-nav" id="navbarNav">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link active">首页</a>
+        </li>
+        <li class="nav-item">
+          <a href="learn.html" class="nav-link">学习</a>
+        </li>
+        <li class="nav-item">
+          <a href="login.html" class="nav-link">登录</a>
+        </li>
+        <li class="nav-item">
+          <a href="my.html" class="nav-link">我的</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1 class="hero-title">口腔解剖生理学学习平台</h1>
+    <p class="hero-subtitle">基于第八版教材，权威内容，沉浸式学习体验</p>
+    <div class="hero-actions">
+      <a href="learn.html" class="btn btn-primary">快速学习</a>
+      <a href="#advantages" class="btn btn-secondary">了解更多</a>
+    </div>
+  </section>
+
+  <section class="section" id="samples">
+    <h2 class="section-title">解剖样例</h2>
+    <div class="container grid grid-3" id="samplesGrid"></div>
+  </section>
+
+  <section class="section" id="advantages">
+    <h2 class="section-title">平台优势</h2>
+    <div class="container grid grid-4" id="advantagesGrid"></div>
+  </section>
+
+  <section class="section" id="partners">
+    <h2 class="section-title">合作院校</h2>
+    <div class="container grid grid-6" id="universitiesGrid"></div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="#">关于我们</a>
+      <a href="#">使用指南</a>
+      <a href="#">联系我们</a>
+      <a href="#">隐私政策</a>
+    </div>
+    <p>&copy; 2024 口腔解剖生理学学习平台 | 基于第八版教材</p>
+  </footer>
+
+  <script src="../data/index.js"></script>
+  <script>
+    (function () {
+      const { sampleImages, advantages, universities } = window.indexData;
+
+      document.getElementById('navbarToggle').addEventListener('click', function () {
+        document.getElementById('navbarNav').classList.toggle('active');
+      });
+
+      document.getElementById('samplesGrid').innerHTML = sampleImages.map(item => `
+        <div class="card">
+          <img src="${item.image}" alt="${item.title}" class="card-image">
+          <div class="card-body">
+            <h3 class="card-title">${item.title}</h3>
+            <p class="card-text">${item.description}</p>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('advantagesGrid').innerHTML = advantages.map(item => `
+        <div class="card feature-card">
+          <i>${item.icon}</i>
+          <h3>${item.title}</h3>
+          <p>${item.description}</p>
+        </div>
+      `).join('');
+
+      document.getElementById('universitiesGrid').innerHTML = universities.map(item => `
+        <div class="card university-card">
+          <i>${item.logo}</i>
+          <span>${item.name}</span>
+        </div>
+      `).join('');
+    })();
+  </script>
+</body>
+
+</html>
